@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 	
-	float angle = 0;
-	int xSpeed = 2;
+	//float angle = 0;
+	//int xSpeed = 2;
+
+	public float speed = 5f;
 
 	enum PlayerState{
 		Standing, Jumping, Falling
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GetInput();
-		MovePlayer();
+		MovePlayerRight();
 	}
 
 
@@ -58,14 +60,15 @@ public class Player : MonoBehaviour {
 		currentState = PlayerState.Standing;
 	}
 
-	//Movement of the player
-	void MovePlayer()
+	//Movement of the player to the right
+	void MovePlayerRight()
 	{
-		Vector2 pos = transform.position;
-		pos.x = Mathf.Cos(angle)*5;
-		
-		transform.position = pos;
-		angle += Time.deltaTime * xSpeed;
+		transform.Translate (speed * Time.deltaTime, 0,0);
+	}
+
+	void MovePlayerLeft()
+	{
+		transform.Translate (-speed * Time.deltaTime, 0,0);
 	}
 
 }
