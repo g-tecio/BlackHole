@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 	
-	public float speed = 5f;
+	float timeCounter = 0;
 
-
+	public float radius;
+	public float speed;
 
 	enum PlayerState{
 		Standing, Jumping
 	}
 
-	PlayerState currentState = PlayerState.Standing;
+	PlayerState currentState;
 
 
 
@@ -21,20 +23,19 @@ public class Player : MonoBehaviour {
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		radius = 2;
+		speed = 1;
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		GetInput();
-		MovePlayerLeft();
-
+		Oscillator();
 	}
-
 
 	//Jump function, when the player is standing, can jump
  	void GetInput(){
@@ -48,9 +49,11 @@ public class Player : MonoBehaviour {
 	}
 
 	//Jump Function
-	void Jump()
+	public void Jump()
 	{
 		currentState = PlayerState.Jumping;
+		Vector2 position = transform.position;
+
 		rb.velocity = new Vector2(0,5);
 	}
 
@@ -58,17 +61,40 @@ public class Player : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		currentState = PlayerState.Standing;
+		if (other.gameObject.tag == "top"){
+			Physics2D.gravity = new Vector2 (0f, 9.8f);
+		}
+		if (other.gameObject.tag == "left"){
+			Physics2D.gravity = new Vector2 (-9.8f, 0f);
+		}
+		if (other.gameObject.tag == "right"){
+			Physics2D.gravity = new Vector2 (9.8f, 0f);
+		}
+		if (other.gameObject.tag == "bottom"){
+			Physics2D.gravity = new Vector2 (0f, -9.8f);
+		}
 	}
 
 	//Movement of the player to the right
 	void MovePlayerRight()
 	{
-		transform.Translate (speed * Time.deltaTime, 0,0);
+		transform.Translate (speed * Time.deltaTime, 0 ,1);
+		
 	}
 
 	void MovePlayerLeft()
 	{
 		transform.Translate (-speed * Time.deltaTime, 0,0);
+	}
+
+	void Oscillator(){
+		timeCounter += Time.deltaTime*speed;
+
+		float x = Mathf.Cos (timeCounter)*radius;
+		float y = Mathf.Sin (timeCounter)*radius;
+
+		transform.position = new Vector2 (x, y);		
+		
 	}
 
 }
