@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 	
-	//float angle = 0;
-	//int xSpeed = 2;
-
-	public float speed = 5f;
+	public float speed = 15f;
 
 	enum PlayerState{
-		Standing, Jumping, Falling
+		Standing, Jumping
 	}
 
-	PlayerState currentState = PlayerState.Falling;
+	PlayerState currentState = PlayerState.Standing;
 
 
 
@@ -32,7 +29,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GetInput();
-		//MovePlayerRight();
+		MovePlayerRight();
 	}
 
 
