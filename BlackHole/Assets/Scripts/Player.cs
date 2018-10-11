@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	
 	public float speed = 5f;
 
+
+
 	enum PlayerState{
 		Standing, Jumping
 	}
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		GetInput();
 		MovePlayerLeft();
+
 	}
 
 
