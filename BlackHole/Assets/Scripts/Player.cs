@@ -61,7 +61,7 @@ public class Player : MonoBehaviour {
 	//Movement of the player to the right
 	void MovePlayerRight()
 	{
-		transform.Translate (speed * Time.deltaTime, 0,0);
+		transform.Translate (speed * Time.deltaTime, 0,1);
 		
 	}
 
