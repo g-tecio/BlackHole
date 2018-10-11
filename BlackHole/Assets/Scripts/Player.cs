@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 	
-	public float speed = 15f;
+	public float speed = 5f;
 
 	enum PlayerState{
 		Standing, Jumping
 	}
 
-	PlayerState currentState;
+	PlayerState currentState = PlayerState.Standing;
 
 
 
@@ -29,8 +29,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GetInput();
-		MovePlayerRight();
-		
+		MovePlayerLeft();
 	}
 
 
@@ -61,8 +60,7 @@ public class Player : MonoBehaviour {
 	//Movement of the player to the right
 	void MovePlayerRight()
 	{
-		transform.Translate (speed * Time.deltaTime, 0,1);
-		
+		transform.Translate (speed * Time.deltaTime, 0,0);
 	}
 
 	void MovePlayerLeft()
