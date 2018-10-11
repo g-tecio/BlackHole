@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
 		Standing, Jumping
 	}
 
-	PlayerState currentState = PlayerState.Standing;
+	PlayerState currentState;
 
 
 
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		GetInput();
 		MovePlayerRight();
+		
 	}
 
 
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour {
 	void MovePlayerRight()
 	{
 		transform.Translate (speed * Time.deltaTime, 0,0);
+		
 	}
 
 	void MovePlayerLeft()
