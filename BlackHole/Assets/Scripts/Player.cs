@@ -94,13 +94,16 @@ public class Player : MonoBehaviour {
 		float x = Mathf.Cos (timeCounter)*radius;
 		float y = Mathf.Sin (timeCounter)*radius;
 
-		transform.position = new Vector2 (x, y);
+        transform.position = new Vector2(x, y);
 
         if(Input.GetKey(KeyCode.Space)){
-            x = Mathf.Cos(timeCounter) * radius - 0.5f;
-            y = Mathf.Sin(timeCounter) * radius - 0.5f;
+            radius = 1;
+            x = Mathf.Cos(timeCounter) * radius;
+            y = Mathf.Sin(timeCounter) * radius;
 
             transform.position = new Vector2(x, y);
+        }else{
+            radius = 2;
         }
 		
 	}
