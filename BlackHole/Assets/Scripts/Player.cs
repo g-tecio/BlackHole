@@ -58,9 +58,19 @@ public class Player : MonoBehaviour
             radius = 1;
             x = Mathf.Cos(timeCounter) * radius;
             y = Mathf.Sin(timeCounter) * radius;
-
             transform.position = new Vector2(x, y);
-        }
+
+			
+
+        }else if (isJump == true)
+		{
+			isJump = false;
+			radius = 2;
+			x = Mathf.Cos(timeCounter) * radius;
+			y = Mathf.Sin(timeCounter) * radius;
+
+			transform.position = new Vector2(x,y);
+		}
     }
 
     void Oscillator()
@@ -73,16 +83,4 @@ public class Player : MonoBehaviour
         transform.position = new Vector2(x, y);
     }
 
-    public void returnJump()
-    {
-        if (isJump == true)
-        {
-            isJump = false;
-            radius = 2;
-            x = Mathf.Cos(timeCounter) * radius;
-            y = Mathf.Sin(timeCounter) * radius;
-
-            transform.position = new Vector2(x, y);
-        }
-    }
 }
