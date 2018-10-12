@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Obj : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject DeathEffectObj;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -18,8 +20,9 @@ public class Obj : MonoBehaviour {
 	{
 		if(col.gameObject.tag.Equals("Player"))
 		{
-			Destroy (col.gameObject);
-			//Destroy (gameObject);
+            GameObject effectObj = Instantiate(DeathEffectObj, col.contacts[0].point, Quaternion.identity);
+            Destroy(effectObj, 0.5f);
+            Destroy (col.gameObject);
 		}
 	}
 }
