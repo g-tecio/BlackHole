@@ -9,8 +9,12 @@ public class Player : MonoBehaviour {
 
 	public float radius;
 	public float speed;
+    bool isJump = false;
+    float x;
+    float y;
 
-	enum PlayerState{
+
+    enum PlayerState{
 		Standing, Jumping
 	}
 
@@ -51,12 +55,12 @@ public class Player : MonoBehaviour {
 	//Jump Function
 	public void Jump()
 	{
-        radius = 1.5f;
-		currentState = PlayerState.Jumping;
-		Vector2 position = transform.position;
+        radius = 1;
+        x = Mathf.Cos(timeCounter) * radius;
+        y = Mathf.Sin(timeCounter) * radius;
 
-		rb.velocity = new Vector2(0,5);
-	}
+        transform.position = new Vector2(x, y);
+    }
 
 	//Collision with the floor
 	void OnCollisionEnter2D(Collision2D other)
@@ -88,24 +92,21 @@ public class Player : MonoBehaviour {
 		transform.Translate (-speed * Time.deltaTime, 0,0);
 	}
 
-	void Oscillator(){
+    void Oscillator(){
 		timeCounter += Time.deltaTime*speed;
 
-		float x = Mathf.Cos (timeCounter)*radius;
-		float y = Mathf.Sin (timeCounter)*radius;
+		x = Mathf.Cos (timeCounter)*radius;
+		y = Mathf.Sin (timeCounter)*radius;
 
         transform.position = new Vector2(x, y);
-
-        if(Input.GetKey(KeyCode.Space)){
-            radius = 1;
-            x = Mathf.Cos(timeCounter) * radius;
-            y = Mathf.Sin(timeCounter) * radius;
-
-            transform.position = new Vector2(x, y);
-        }else{
-            radius = 2;
-        }
-		
 	}
+
+    public void returnJump(){
+        radius = 2;
+        x = Mathf.Cos(timeCounter) * radius;
+        y = Mathf.Sin(timeCounter) * radius;
+
+        transform.position = new Vector2(x, y);
+    }
 
 }
