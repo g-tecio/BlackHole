@@ -9,7 +9,6 @@ public class Player : MonoBehaviour {
 
 	public float radius;
 	public float speed;
-    bool isJump = false;
     float x;
     float y;
 
@@ -71,14 +70,15 @@ public class Player : MonoBehaviour {
         transform.position = new Vector2(x, y);
     }
 
-	void OnColissionEnter2D (Collision2D col)
-	{
-		if (col.gameObject.tag.Equals("Enemy"))
-		{
-			Debug.Log("GameOver");
-			Destroy(col.gameObject);
-		}
+	// void OnColliderEnter2D (Collider2D col)
+	// {
+	// 	if (col.gameObject.tag == "Enemy")
+	// 	{
+	// 		DestroyPlayer(col);
+	// 		Debug.Log("Destroy");
+	// 	}
 		
-	}
+	// }
+
 
 }
