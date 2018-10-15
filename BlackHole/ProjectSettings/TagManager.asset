@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - bottom
-  - left
-  - right
-  - top
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
