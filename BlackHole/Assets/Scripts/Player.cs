@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	public float jumpForce;
-	public int moveSpeed = 0;
-	private Rigidbody2D rb;
+
+	public float RotateSpeed = 1.5f;
+	public Transform Target;
+	private Vector3 zAxis = new Vector3(0,0,1);
+
+	//public int moveSpeed = 0;
+	 Rigidbody2D rb;
 	private float moveInput;
-	public Transform feetPos;
-	public float checkRadius;
-	public LayerMask whatIsGround;
-	
+
+	enum PlayerState{
+		Standing, Jumping, Falling
+	}
+
+	PlayerState currentState = PlayerState.Falling;
+
+
 	
 
 
@@ -30,19 +38,36 @@ public class Player : MonoBehaviour {
 
 	void Update()
 	{
-		isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+		GetInput();
+	}
 
-		if(isGrounded == true && Input.GetKeyDown(KeyCode.Space)){
-			rb.velocity = Vector2.up * jumpForce;
+	void GetInput()
+	{
+		if (Input.GetMouseButton(0))
+		{
+			if (currentState == PlayerState.Standing)
+			{
+				Jump();
+			}
 		}
+	}
+
+	void Jump()
+	{
+		currentState = PlayerState.Jumping;
+		rb.velocity = new Vector2(0,10);
 	}
 	
 
 	void MovePlayer()
 	{
-		this.transform.position += transform.right * moveSpeed * Time.deltaTime;
-		
-		
+		//this.transform.position += transform.right * moveSpeed * Time.deltaTime;	
+		this.transform.RotateAround(Target.position,zAxis,RotateSpeed);
+	}
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		currentState = PlayerState.Standing;
 	}
 
 
