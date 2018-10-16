@@ -52,10 +52,10 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void Jump()
+    public void Jump()
 	{
 		currentState = PlayerState.Jumping;
-		rb.velocity = new Vector2(0,10);
+		rb.velocity = new Vector2(0,-10);
 	}
 	
 
