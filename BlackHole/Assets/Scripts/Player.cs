@@ -57,7 +57,7 @@ public class Player : MonoBehaviour {
 	{
 		currentState = PlayerState.Jumping;
 		//rb.velocity = new Vector2(0,-10);
-		rb.AddForceAtPosition(transform.up * jumpForce, rb.position);
+		rb.AddForce(transform.up * jumpForce);
 	}
 	
 
