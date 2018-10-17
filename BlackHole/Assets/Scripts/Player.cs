@@ -8,7 +8,8 @@ public class Player : MonoBehaviour {
 	public Transform Target;
 	private Vector3 zAxis = new Vector3(0,0,1);
 
-	//public int moveSpeed = 0;
+	public float jumpForce;
+
 	 Rigidbody2D rb;
 	private float moveInput;
 
@@ -55,13 +56,14 @@ public class Player : MonoBehaviour {
     public void Jump()
 	{
 		currentState = PlayerState.Jumping;
-		rb.velocity = new Vector2(0,-10);
+		//rb.velocity = new Vector2(0,-10);
+		rb.AddForceAtPosition(transform.up * jumpForce, rb.position);
 	}
 	
 
 	void MovePlayer()
 	{
-		//this.transform.position += transform.right * moveSpeed * Time.deltaTime;	
+	
 		this.transform.RotateAround(Target.position,zAxis,RotateSpeed);
 	}
 

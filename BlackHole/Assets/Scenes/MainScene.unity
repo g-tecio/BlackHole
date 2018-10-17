@@ -408,7 +408,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.12
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 4cd6b02c1bc12400b9d877cbe7995e43, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -482,7 +482,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 886272584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.006, y: 2.184, z: 0}
+  m_LocalPosition: {x: 0.03, y: 1.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -510,8 +510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc408aea538ff4fa4a84e7b76bc22107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotateSpeed: 0.7
+  RotateSpeed: 0
   Target: {fileID: 1093088577}
+  jumpForce: 212.27
 --- !u!1 &1093088574
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +546,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.73
+  m_Radius: 2.25
 --- !u!212 &1093088576
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -619,7 +620,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 8.55
 --- !u!250 &1093088579
 PointEffector2D:
   m_ObjectHideFlags: 0
