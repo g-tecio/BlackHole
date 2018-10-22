@@ -530,9 +530,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc408aea538ff4fa4a84e7b76bc22107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotateSpeed: 1
+  RotateSpeed: 0.4
   Target: {fileID: 1093088577}
-  jumpForce: 50
+  jumpForce: 140
 --- !u!1 &1093088574
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1093088574}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 4cd6b02c1bc12400b9d877cbe7995e43, type: 2}
   m_IsTrigger: 0
@@ -633,7 +633,7 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1093088574}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -653,7 +653,7 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_ForceMagnitude: 87.1
+  m_ForceMagnitude: -87.1
   m_ForceVariation: 0
   m_DistanceScale: 1
   m_ForceSource: 1
@@ -667,7 +667,7 @@ PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1093088574}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
